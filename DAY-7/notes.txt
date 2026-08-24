@@ -1,0 +1,273 @@
+- Topic: SQL vs NoSQL, MongoDB basics, Atlas, Compass, CRUD, and query operators
+
+
+- 1. SQL vs NoSQL — When and Why to Use MongoDB
+    - SQL databases store data mainly in tables made up of rows and columns.
+    - Examples of SQL databases are MySQL, PostgreSQL, Oracle, and SQL Server.
+    - SQL databases are a good choice when the data has a fixed structure and many relationships between different tables.
+    - For example, a banking application usually benefits from SQL because customers, accounts, transactions, and branches have strong relationships and require reliable transactions.
+    - NoSQL databases use different data models instead of the traditional table-and-row model.
+    - MongoDB is a NoSQL database that stores data as documents.
+    - MongoDB is useful when the structure of the data can change frequently or when data is naturally represented as nested objects.
+    - MongoDB is also popular for applications that need fast development and large-scale distributed data storage.
+    - A common example is a product catalog where different products can have different properties.
+    - For example, a laptop may have RAM and storage fields while a shirt may have size and color fields.
+    - MongoDB allows these documents to have different fields without requiring every document to have exactly the same structure.
+    - The important point is that MongoDB is not simply better than SQL because each database type is suitable for different problems.
+    - Use SQL when relationships, strict structure, complex joins, and strong transactional consistency are central to the application.
+    - Consider MongoDB when flexible document structures, nested data, rapid development, and horizontal scalability are important.
+
+- 2. Documents and Collections
+    - MongoDB stores data using two important concepts called documents and collections.
+    - A document is similar to a single record in a traditional SQL table.
+    - A document contains data in key-value pairs.
+    - Example document:
+    - **{ "name": "Rahul", "age": 22, "city": "Pune" }**
+
+    - A collection is a group of related documents.
+    - A collection is roughly similar to a table in SQL.
+    - For example, a collection called users can contain many user documents.
+        - Example:
+        - **users**
+        - **{ "name": "Rahul", "age": 22 }**
+        - **{ "name": "Priya", "age": 24 }**
+        - **{ "name": "Aman", "age": 21 }**
+    - MongoDB databases contain collections, and collections contain documents.
+    - A simple way to remember the hierarchy is Database → Collection → Document.
+
+- 3. JSON and BSON
+    - JSON stands for JavaScript Object Notation and is a popular text-based format for representing structured data.
+    - MongoDB documents look very similar to JSON, which makes them easy for developers to understand.
+        - Example JSON:
+        - **{ "name": "Rahul", "age": 22, "skills": ["Python", "MongoDB"] }**
+    - MongoDB actually stores documents internally using BSON.
+    - BSON stands for Binary JSON.
+    - BSON is a binary representation of JSON-like documents and supports additional data types that are useful for databases.
+    - For example, BSON supports types such as Date and ObjectId.
+    - You can think of JSON as the easy-to-read representation and BSON as the format MongoDB uses internally to store the document.
+
+- 4. MongoDB Atlas — Cloud Setup
+    - MongoDB Atlas is MongoDB's cloud-based database service.
+    - It allows you to create and use MongoDB databases without installing the MongoDB database server on your own computer.
+    - Atlas provides a free tier that is suitable for learning and small practice projects, subject to the current limits shown by Atlas.
+        - Step 1: Open the MongoDB Atlas website.
+        - Step 2: Create a MongoDB account or sign in using an available login option.
+        - Step 3: Create a new project for your training work.
+        - Step 4: Create a database deployment or cluster and choose the free option when it is available.
+        - Step 5: Select a cloud provider and region close to you if Atlas asks you to choose one.
+        - Step 6: Give the deployment a simple name, such as **training-cluster**.
+        - Step 7: Wait for Atlas to finish creating the deployment.
+        - Step 8: Create a database user by providing a username and password.
+        - Step 9: Remember the database username and password because they are required when connecting to the database.
+        - Step 10: Configure network access in Atlas.
+        - Step 11: For a learning setup, add your current IP address using the Atlas network access option.
+        - Step 12: Avoid sharing your database password or connection string publicly.
+        - Step 13: If your IP address changes later, you may need to update the network access rule.
+        - Step 14: Once the deployment and access settings are ready, Atlas can be connected to MongoDB Compass or an application.
+
+- 5. MongoDB Compass — GUI
+    - MongoDB Compass is a graphical user interface for MongoDB.
+    - GUI means Graphical User Interface, so you can work with MongoDB using buttons, forms, and screens instead of typing every command.
+    - Compass can be used to create databases and collections, insert documents, view documents, edit documents, delete documents, and run queries.
+    - Download and install MongoDB Compass from the official MongoDB website.
+    - Open MongoDB Compass after installation.
+    - You can connect Compass to your Atlas deployment using the connection string provided by Atlas.
+
+- 6. Connect MongoDB Atlas to MongoDB Compass
+    - Step 1: Open your MongoDB Atlas project.
+    - Step 2: Open the database deployment you created.
+    - Step 3: Click the option to connect to the deployment.
+    - Step 4: Select MongoDB Compass as the connection method if Atlas displays multiple options.
+    - Step 5: Copy the connection string shown by Atlas.
+        - A connection string commonly looks similar to **mongodb+srv://<username>:<password>@cluster-example.mongodb.net/**.
+    - Step 6: Replace the username and password placeholders with the database user's credentials if Atlas has not already done so.
+    - Step 7: Open MongoDB Compass.
+    - Step 8: Paste the connection string into the Compass connection field.
+    - Step 9: Click Connect.
+    - Step 10: After a successful connection, Compass will display the databases available on the Atlas deployment.
+        - If the connection fails, first check the username, password, network access/IP rule, and connection string.
+        - Never commit a connection string containing a real password to GitHub.
+        - For training repositories, use placeholders such as **<username>** and **<password>** when documenting a connection string.
+
+- 7. MongoDB CRUD Operations — 
+
+- 1. Create / Select Database
+
+    - Select the database named training_db using:
+
+    **use training_db**
+
+    - MongoDB will create the database when you first insert data into it.
+
+- 2. Create Collection
+
+    - Create a collection named students using:
+
+    **db.createCollection("students")**
+
+- 3. CREATE — Insert Documents
+
+- Insert one document using:
+
+    **db.students.insertOne({
+    name: "Rahul",
+    age: 21,
+    city: "Pune",
+    course: "Backend"
+    })**
+
+    - Insert multiple documents using:
+
+    **db.students.insertMany([
+    {
+        name: "Priya",
+        age: 23,
+        city: "Mumbai",
+        course: "Data Science"
+    },
+    {
+        name: "Aman",
+        age: 22,
+        city: "Delhi",
+        course: "Backend"
+    },
+    {
+        name: "Sneha",
+        age: 20,
+        city: "Pune",
+        course: "Frontend"
+    }
+    ])**
+
+    - The students collection now contains four documents.
+
+- 4. READ — Retrieve Documents
+
+    - Retrieve all documents using:
+
+    **db.students.find()**
+
+    - Retrieve one document using:
+
+    **db.students.findOne({ name: "Rahul" })**
+
+    - Find students from Pune using:
+
+    **db.students.find({ city: "Pune" })**
+
+    - Find students older than 21 using:
+
+    **db.students.find({
+    age: { $gt: 21 }
+    })**
+
+    - Find students from Pune or Mumbai using:
+
+    **db.students.find({
+    city: { $in: ["Pune", "Mumbai"] }
+    })**
+
+    - Find students who are older than 22 OR are from Pune using:
+
+    **db.students.find({
+    $or: [
+        { age: { $gt: 22 } },
+        { city: "Pune" }
+    ]
+    })**
+
+    - Sort students by age in ascending order using:
+
+    **db.students.find().sort({ age: 1 })**
+
+    - Sort students by age in descending order using:
+
+    **db.students.find().sort({ age: -1 })**
+
+    - Get only the first two documents using:
+
+    **db.students.find().limit(2)**
+
+    - Count all students using:
+
+    **db.students.countDocuments()**
+
+    - Count students from Pune using:
+
+    **db.students.countDocuments({
+    city: "Pune"
+    })**
+
+- 5. UPDATE — Modify Documents
+
+    - Update Rahul's age from 21 to 22 using:
+
+    **db.students.updateOne(
+    { name: "Rahul" },
+    { $set: { age: 22 } }
+    )**
+
+    - Update the city of all Backend students to Bangalore using:
+
+    **db.students.updateMany(
+    { course: "Backend" },
+    { $set: { city: "Bangalore" } }
+    )**
+
+    - Increase Sneha's age by 1 using:
+
+    **db.students.updateOne(
+    { name: "Sneha" },
+    { $inc: { age: 1 } }
+    )**
+
+    - Add a new fees field to Priya's document using:
+
+    **db.students.updateOne(
+    { name: "Priya" },
+    { $set: { fees: 50000 } }
+    )**
+
+    - Remove the fees field from Priya's document using:
+
+    **db.students.updateOne(
+    { name: "Priya" },
+    { $unset: { fees: "" } }
+    )**
+
+- 6. DELETE — Remove Documents
+
+    - Delete Sneha's document using:
+
+    **db.students.deleteOne({
+    name: "Sneha"
+    })**
+
+    - Delete all students from Pune using:
+
+    **db.students.deleteMany({
+    city: "Pune"
+    })**
+
+    - Delete all documents from the collection using:
+
+    **db.students.deleteMany(
+    
+{})**
+
+    - WARNING: The last command deletes every document in the students collection.
+    - The collection itself will still exist.
+
+- 8. Shell vs Compass
+    - The MongoDB shell is useful when you want to work directly with commands and understand how MongoDB queries actually work.
+    - Compass is useful when you are learning, exploring data visually, or want a graphical interface.
+    - The underlying database operation is still MongoDB in both cases.
+    - Learning the shell commands is recommended even if you normally use Compass because application code will eventually send database operations programmatically.
+
+- 9. Important Safety and GitHub Tips
+    - Never upload your Atlas database password to GitHub.
+    - Never commit a real MongoDB connection string containing credentials.
+    - If you create a configuration file containing secrets, add it to **.gitignore**.
+    - For example, a connection string in a training note should use placeholders such as **mongodb+srv://<username>:<password>@<cluster-url>/**.
+    - If a real password or connection string is accidentally pushed to GitHub, change or revoke the exposed credential immediately.
+    - Keep the GitHub repository notes focused on commands and concepts that students can safely copy and practice.
