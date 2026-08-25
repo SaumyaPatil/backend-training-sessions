@@ -1,4 +1,41 @@
-mongoose - library of nodejs
-It acts as a helper for mongodb, through JS object you can perform CRUD on mongodb
+Mongoose
 
-dotenv - URL, port secret info rakhne ke liye, jo github pr push nhi hota and its lost everytime you close your project
+- Mongoose is an ODM (Object Data Modeling) library for Node.js and MongoDB.
+- It makes it easier to work with MongoDB using JavaScript objects.
+- It provides features like schemas, models, validation, and CRUD operations.
+
+Schema
+
+- A schema defines the structure and rules of documents in a MongoDB collection.
+- It specifies fields, data types, validation rules, default values, etc.
+- Example:
+  const productSchema = new mongoose.Schema({
+    name: String,
+    price: Number
+  });
+
+Model
+
+- A model is created from a schema and is used to interact with a MongoDB collection.
+- It provides methods to perform CRUD operations.
+- Example:
+  const Product = mongoose.model("Product", productSchema);
+- The `Product` model will normally interact with the `products` collection.
+
+dotenv
+
+- `dotenv` is an npm package used to load environment variables from a `.env` file into `process.env`.
+
+- It is commonly used to store sensitive or configuration values such as MongoDB connection strings, passwords, API keys, and port numbers.
+
+- Example `.env`:
+  MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/product
+
+- Access it in Node.js using:
+  import dotenv from "dotenv";
+  dotenv.config();
+
+  mongoose.connect(process.env.MONGO_URI);
+
+- The `.env` file should generally be added to `.gitignore` so sensitive information is not pushed to GitHub.
+- After running command git pull, create .env file and add 'PORT' & 'MONGODB_URI'
