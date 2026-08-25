@@ -1,0 +1,4 @@
+mongoose - library of nodejs
+It acts as a helper for mongodb, through JS object you can perform CRUD on mongodb
+
+dotenv - URL, port secret info rakhne ke liye, jo github pr push nhi hota and its lost everytime you close your project
