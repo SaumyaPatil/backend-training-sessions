@@ -10,8 +10,8 @@ Schema
 - It specifies fields, data types, validation rules, default values, etc.
 - Example:
   const productSchema = new mongoose.Schema({
-    name: String,
-    price: Number
+  name: String,
+  price: Number
   });
 
 Model
