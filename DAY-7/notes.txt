@@ -1,273 +1,263 @@
-- Topic: SQL vs NoSQL, MongoDB basics, Atlas, Compass, CRUD, and query operators
+SQL vs NoSQL
 
+* SQL databases store data mainly in tables made up of rows and columns.
+* Examples: MySQL, PostgreSQL, Oracle, SQL Server.
+* SQL is suitable when data has a fixed structure, strong relationships, complex joins, and transactions are important.
+* NoSQL databases use flexible data models instead of the traditional table-and-row structure.
+* MongoDB is a NoSQL database that stores data as documents.
+* MongoDB is useful when data structures can change frequently, data is naturally represented as nested objects, or horizontal scalability is important.
+* Example: A product catalog where laptops can have RAM and storage fields while shirts can have size and color fields.
+* Neither SQL nor NoSQL is universally better; the choice depends on the application's requirements.
 
-- 1. SQL vs NoSQL — When and Why to Use MongoDB
-    - SQL databases store data mainly in tables made up of rows and columns.
-    - Examples of SQL databases are MySQL, PostgreSQL, Oracle, and SQL Server.
-    - SQL databases are a good choice when the data has a fixed structure and many relationships between different tables.
-    - For example, a banking application usually benefits from SQL because customers, accounts, transactions, and branches have strong relationships and require reliable transactions.
-    - NoSQL databases use different data models instead of the traditional table-and-row model.
-    - MongoDB is a NoSQL database that stores data as documents.
-    - MongoDB is useful when the structure of the data can change frequently or when data is naturally represented as nested objects.
-    - MongoDB is also popular for applications that need fast development and large-scale distributed data storage.
-    - A common example is a product catalog where different products can have different properties.
-    - For example, a laptop may have RAM and storage fields while a shirt may have size and color fields.
-    - MongoDB allows these documents to have different fields without requiring every document to have exactly the same structure.
-    - The important point is that MongoDB is not simply better than SQL because each database type is suitable for different problems.
-    - Use SQL when relationships, strict structure, complex joins, and strong transactional consistency are central to the application.
-    - Consider MongoDB when flexible document structures, nested data, rapid development, and horizontal scalability are important.
+Documents and Collections
 
-- 2. Documents and Collections
-    - MongoDB stores data using two important concepts called documents and collections.
-    - A document is similar to a single record in a traditional SQL table.
-    - A document contains data in key-value pairs.
-    - Example document:
-    - **{ "name": "Rahul", "age": 22, "city": "Pune" }**
+* A **document** is similar to a row/record in SQL.
 
-    - A collection is a group of related documents.
-    - A collection is roughly similar to a table in SQL.
-    - For example, a collection called users can contain many user documents.
-        - Example:
-        - **users**
-        - **{ "name": "Rahul", "age": 22 }**
-        - **{ "name": "Priya", "age": 24 }**
-        - **{ "name": "Aman", "age": 21 }**
-    - MongoDB databases contain collections, and collections contain documents.
-    - A simple way to remember the hierarchy is Database → Collection → Document.
+* A document stores data as key-value pairs.
 
-- 3. JSON and BSON
-    - JSON stands for JavaScript Object Notation and is a popular text-based format for representing structured data.
-    - MongoDB documents look very similar to JSON, which makes them easy for developers to understand.
-        - Example JSON:
-        - **{ "name": "Rahul", "age": 22, "skills": ["Python", "MongoDB"] }**
-    - MongoDB actually stores documents internally using BSON.
-    - BSON stands for Binary JSON.
-    - BSON is a binary representation of JSON-like documents and supports additional data types that are useful for databases.
-    - For example, BSON supports types such as Date and ObjectId.
-    - You can think of JSON as the easy-to-read representation and BSON as the format MongoDB uses internally to store the document.
+* Example:
+  {
+    "name": "Rahul",
+    "age": 22,
+    "city": "Pune"
+  }
 
-- 4. MongoDB Atlas — Cloud Setup
-    - MongoDB Atlas is MongoDB's cloud-based database service.
-    - It allows you to create and use MongoDB databases without installing the MongoDB database server on your own computer.
-    - Atlas provides a free tier that is suitable for learning and small practice projects, subject to the current limits shown by Atlas.
-        - Step 1: Open the MongoDB Atlas website.
-        - Step 2: Create a MongoDB account or sign in using an available login option.
-        - Step 3: Create a new project for your training work.
-        - Step 4: Create a database deployment or cluster and choose the free option when it is available.
-        - Step 5: Select a cloud provider and region close to you if Atlas asks you to choose one.
-        - Step 6: Give the deployment a simple name, such as **training-cluster**.
-        - Step 7: Wait for Atlas to finish creating the deployment.
-        - Step 8: Create a database user by providing a username and password.
-        - Step 9: Remember the database username and password because they are required when connecting to the database.
-        - Step 10: Configure network access in Atlas.
-        - Step 11: For a learning setup, add your current IP address using the Atlas network access option.
-        - Step 12: Avoid sharing your database password or connection string publicly.
-        - Step 13: If your IP address changes later, you may need to update the network access rule.
-        - Step 14: Once the deployment and access settings are ready, Atlas can be connected to MongoDB Compass or an application.
+* A **collection** is a group of related documents.
 
-- 5. MongoDB Compass — GUI
-    - MongoDB Compass is a graphical user interface for MongoDB.
-    - GUI means Graphical User Interface, so you can work with MongoDB using buttons, forms, and screens instead of typing every command.
-    - Compass can be used to create databases and collections, insert documents, view documents, edit documents, delete documents, and run queries.
-    - Download and install MongoDB Compass from the official MongoDB website.
-    - Open MongoDB Compass after installation.
-    - You can connect Compass to your Atlas deployment using the connection string provided by Atlas.
+* A collection is roughly similar to a table in SQL.
 
-- 6. Connect MongoDB Atlas to MongoDB Compass
-    - Step 1: Open your MongoDB Atlas project.
-    - Step 2: Open the database deployment you created.
-    - Step 3: Click the option to connect to the deployment.
-    - Step 4: Select MongoDB Compass as the connection method if Atlas displays multiple options.
-    - Step 5: Copy the connection string shown by Atlas.
-        - A connection string commonly looks similar to **mongodb+srv://<username>:<password>@cluster-example.mongodb.net/**.
-    - Step 6: Replace the username and password placeholders with the database user's credentials if Atlas has not already done so.
-    - Step 7: Open MongoDB Compass.
-    - Step 8: Paste the connection string into the Compass connection field.
-    - Step 9: Click Connect.
-    - Step 10: After a successful connection, Compass will display the databases available on the Atlas deployment.
-        - If the connection fails, first check the username, password, network access/IP rule, and connection string.
-        - Never commit a connection string containing a real password to GitHub.
-        - For training repositories, use placeholders such as **<username>** and **<password>** when documenting a connection string.
+* Example:
+  users
+  { "name": "Rahul", "age": 22 }
+  { "name": "Priya", "age": 24 }
+  { "name": "Aman", "age": 21 }
 
-- 7. MongoDB CRUD Operations — 
+* MongoDB hierarchy:
+  Database → Collection → Document
 
-- 1. Create / Select Database
+JSON and BSON
 
-    - Select the database named training_db using:
+* JSON stands for JavaScript Object Notation.
+* MongoDB documents look similar to JSON, making them easy for developers to understand.
+* BSON stands for Binary JSON.
+* MongoDB internally stores documents using BSON.
+* BSON supports additional data types such as Date and ObjectId.
+* Simple way to remember:
+  JSON → easy-to-read representation
+  BSON → format MongoDB uses internally to store documents
 
-    **use training_db**
+MongoDB Atlas
 
-    - MongoDB will create the database when you first insert data into it.
+* MongoDB Atlas is MongoDB's cloud-based database service.
+* It allows you to create and use MongoDB databases without installing the database server locally.
+* Atlas provides a free tier suitable for learning and small practice projects, subject to current limits.
+* Basic setup:
 
-- 2. Create Collection
+  1. Create/sign in to a MongoDB Atlas account.
+  2. Create a project.
+  3. Create a database deployment/cluster.
+  4. Create a database user.
+  5. Configure Network Access and add your IP address.
+  6. Use the connection string to connect to the database.
+* Never share your database password or real connection string publicly.
 
-    - Create a collection named students using:
+MongoDB Compass
 
-    **db.createCollection("students")**
+* MongoDB Compass is a GUI (Graphical User Interface) for MongoDB.
+* It allows you to create databases and collections, insert, view, edit, and delete documents, and run queries using a graphical interface.
+* Compass can connect to MongoDB Atlas using the connection string provided by Atlas.
 
-- 3. CREATE — Insert Documents
+Connect Atlas with Compass
 
-- Insert one document using:
+1. Open MongoDB Atlas.
+2. Open your database deployment.
+3. Click Connect.
+4. Select MongoDB Compass.
+5. Copy the connection string.
+6. Replace `<username>` and `<password>` with your database credentials if required.
+7. Open MongoDB Compass.
+8. Paste the connection string.
+9. Click Connect.
+10. After connecting, Compass will display the databases available in Atlas.
 
-    **db.students.insertOne({
-    name: "Rahul",
-    age: 21,
-    city: "Pune",
-    course: "Backend"
-    })**
+Example connection string:
+mongodb+srv://<username>:<password>@<cluster-url>/
 
-    - Insert multiple documents using:
+* If the connection fails, check the username, password, Network Access/IP rule, and connection string.
+* Never commit a real connection string containing credentials to GitHub.
 
-    **db.students.insertMany([
-    {
-        name: "Priya",
-        age: 23,
-        city: "Mumbai",
-        course: "Data Science"
-    },
-    {
-        name: "Aman",
-        age: 22,
-        city: "Delhi",
-        course: "Backend"
-    },
-    {
-        name: "Sneha",
-        age: 20,
+MongoDB Shell CRUD Commands
+
+1. Create / Select Database
+
+    use training_db
+
+    MongoDB creates the database when you first insert data into it.
+
+2. Create Collection
+
+    db.createCollection("students")
+
+3. CREATE — Insert Documents
+
+    Insert one document:
+
+    db.students.insertOne({
+        name: "Rahul",
+        age: 21,
         city: "Pune",
-        course: "Frontend"
-    }
-    ])**
+        course: "Backend"
+    })
 
-    - The students collection now contains four documents.
+    Insert multiple documents:
 
-- 4. READ — Retrieve Documents
+    db.students.insertMany([
+        {
+            name: "Priya",
+            age: 23,
+            city: "Mumbai",
+            course: "Data Science"
+        },
+        {
+            name: "Aman",
+            age: 22,
+            city: "Delhi",
+            course: "Backend"
+        },
+        {
+            name: "Sneha",
+            age: 20,
+            city: "Pune",
+            course: "Frontend"
+        }
+    ])
 
-    - Retrieve all documents using:
+4. READ — Retrieve Documents
 
-    **db.students.find()**
+    Retrieve all documents:
 
-    - Retrieve one document using:
+        db.students.find()
 
-    **db.students.findOne({ name: "Rahul" })**
+    Retrieve one document:
 
-    - Find students from Pune using:
+        db.students.findOne({ name: "Rahul" })
 
-    **db.students.find({ city: "Pune" })**
+    Find students from Pune:
 
-    - Find students older than 21 using:
+        db.students.find({ city: "Pune" })
 
-    **db.students.find({
-    age: { $gt: 21 }
-    })**
+    Find students older than 21:
 
-    - Find students from Pune or Mumbai using:
+        db.students.find({
+            age: { $gt: 21 }
+        })
 
-    **db.students.find({
-    city: { $in: ["Pune", "Mumbai"] }
-    })**
+    Find students from Pune or Mumbai:
 
-    - Find students who are older than 22 OR are from Pune using:
+        db.students.find({
+            city: { $in: ["Pune", "Mumbai"] }
+        })
 
-    **db.students.find({
-    $or: [
-        { age: { $gt: 22 } },
-        { city: "Pune" }
-    ]
-    })**
+    Find students older than 22 OR from Pune:
 
-    - Sort students by age in ascending order using:
+        db.students.find({
+            $or: [
+                { age: { $gt: 22 } },
+                { city: "Pune" }
+            ]
+        })
 
-    **db.students.find().sort({ age: 1 })**
+    Sort by age in ascending order:
 
-    - Sort students by age in descending order using:
+        db.students.find().sort({ age: 1 })
 
-    **db.students.find().sort({ age: -1 })**
+    Sort by age in descending order:
 
-    - Get only the first two documents using:
+        db.students.find().sort({ age: -1 })
 
-    **db.students.find().limit(2)**
+    Get the first two documents:
 
-    - Count all students using:
+        db.students.find().limit(2)
 
-    **db.students.countDocuments()**
+    Count all students:
 
-    - Count students from Pune using:
+        db.students.countDocuments()
 
-    **db.students.countDocuments({
-    city: "Pune"
-    })**
+    Count students from Pune:
 
-- 5. UPDATE — Modify Documents
+        db.students.countDocuments({
+            city: "Pune"
+        })
 
-    - Update Rahul's age from 21 to 22 using:
+5. UPDATE — Modify Documents
 
-    **db.students.updateOne(
-    { name: "Rahul" },
-    { $set: { age: 22 } }
-    )**
+    Update Rahul's age:
 
-    - Update the city of all Backend students to Bangalore using:
+        db.students.updateOne(
+            { name: "Rahul" },
+            { $set: { age: 22 } }
+        )
 
-    **db.students.updateMany(
-    { course: "Backend" },
-    { $set: { city: "Bangalore" } }
-    )**
+    Update all Backend students' city:
 
-    - Increase Sneha's age by 1 using:
+        db.students.updateMany(
+            { course: "Backend" },
+            { $set: { city: "Bangalore" } }
+        )
 
-    **db.students.updateOne(
-    { name: "Sneha" },
-    { $inc: { age: 1 } }
-    )**
+Increase Sneha's age by 1:
 
-    - Add a new fees field to Priya's document using:
+        db.students.updateOne(
+            { name: "Sneha" },
+            { $inc: { age: 1 } }
+        )
 
-    **db.students.updateOne(
-    { name: "Priya" },
-    { $set: { fees: 50000 } }
-    )**
+    Add a new field:
 
-    - Remove the fees field from Priya's document using:
+        db.students.updateOne(
+            { name: "Priya" },
+            { $set: { fees: 50000 } }
+        )
 
-    **db.students.updateOne(
-    { name: "Priya" },
-    { $unset: { fees: "" } }
-    )**
+    Remove a field:
 
-- 6. DELETE — Remove Documents
+        db.students.updateOne(
+            { name: "Priya" },
+            { $unset: { fees: "" } }
+        )
 
-    - Delete Sneha's document using:
+6. DELETE — Remove Documents
 
-    **db.students.deleteOne({
-    name: "Sneha"
-    })**
+    Delete one document:
 
-    - Delete all students from Pune using:
+        db.students.deleteOne({
+            name: "Sneha"
+        })
 
-    **db.students.deleteMany({
-    city: "Pune"
-    })**
+    Delete multiple documents:
 
-    - Delete all documents from the collection using:
+        db.students.deleteMany({
+            city: "Pune"
+        })
 
-    **db.students.deleteMany(
-    
-{})**
+    Delete all documents:
 
-    - WARNING: The last command deletes every document in the students collection.
-    - The collection itself will still exist.
+        db.students.deleteMany(
+{})
 
-- 8. Shell vs Compass
-    - The MongoDB shell is useful when you want to work directly with commands and understand how MongoDB queries actually work.
-    - Compass is useful when you are learning, exploring data visually, or want a graphical interface.
-    - The underlying database operation is still MongoDB in both cases.
-    - Learning the shell commands is recommended even if you normally use Compass because application code will eventually send database operations programmatically.
+WARNING: `deleteMany({})` deletes every document in the collection. The collection itself still exists.
 
-- 9. Important Safety and GitHub Tips
-    - Never upload your Atlas database password to GitHub.
-    - Never commit a real MongoDB connection string containing credentials.
-    - If you create a configuration file containing secrets, add it to **.gitignore**.
-    - For example, a connection string in a training note should use placeholders such as **mongodb+srv://<username>:<password>@<cluster-url>/**.
-    - If a real password or connection string is accidentally pushed to GitHub, change or revoke the exposed credential immediately.
-    - Keep the GitHub repository notes focused on commands and concepts that students can safely copy and practice.
+Shell vs Compass
+
+* MongoDB Shell is useful for learning and directly executing MongoDB commands.
+* Compass is useful for visually exploring and managing MongoDB data.
+* Both interact with the same MongoDB database.
+* Learning shell commands is useful even when using Compass because applications eventually perform database operations programmatically.
+
+GitHub Safety
+
+* Never upload MongoDB passwords or real connection strings to GitHub.
+* Add `.env` and other files containing secrets to `.gitignore`.
+* Use placeholders in notes:
+  mongodb+srv://<username>:<password>@<cluster-url>/
+* If credentials are accidentally pushed to GitHub, change or revoke them immediately.
