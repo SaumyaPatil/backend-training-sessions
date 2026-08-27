@@ -1,7 +1,5 @@
 # Node.js Backend Training Plan — 12 Days
 
-**Priority order:** Node.js core → Express → MongoDB glimpse → Full-stack (frontend–backend) integration project
-
 ---
 
 ## Day 1 — Node.js Foundations & Environment Setup
