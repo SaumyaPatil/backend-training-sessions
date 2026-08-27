@@ -42,7 +42,7 @@ app.post("/api/products/", async (req, res) => {
 
 // update product
 app.patch("/api/products/:id", async (req, res) => {
-  await Product.findByIdAndUpdate(req.params.id, { featured: "Changed" });
+  await Product.findByIdAndUpdate(req.params.id, { price: "Changed" });
   return res.json({ status: "success" });
 });
 

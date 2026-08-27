@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
   name: {
@@ -18,6 +18,7 @@ const productSchema = new mongoose.Schema({
     default: 4.9,
   },
   createdAt: {
+    type: Date,
     default: Date.now(),
   },
   company: {
