@@ -75,7 +75,6 @@
 - Installing Mongoose, connecting to Atlas from a Node app
 - Schemas & Models — defining structure, data types, validation rules
 - CRUD via Mongoose (`.find()`, `.create()`, `.findByIdAndUpdate()`, `.findByIdAndDelete()`)
-- Replacing the in-memory array from Day 6 with real MongoDB persistence
 
 ---
 
@@ -83,14 +82,14 @@
 
 - Password hashing with `bcrypt`
 - User registration & login APIs
-- JWT — what it is, generating & verifying tokens
+- JWT — what it is, generating & verifying tokens (jsonwebtoken package)
 - Protecting routes with auth middleware
-- Basics of role-based access (admin vs user) — brief mention
 
 ---
 
 ## Day 10 — Project Kickoff: Frontend–Backend Integration (Core Focus Day 1)
 
+- MVC architecture (refactoring the code)
 - Recap: what "full-stack integration" actually means (client calls API, API talks to DB)
 - CORS — what it is, why it errors, how to configure `cors` middleware
 - Connecting a simple frontend (plain HTML/JS or React, based on class background) to the Express API using `fetch`/`axios`
