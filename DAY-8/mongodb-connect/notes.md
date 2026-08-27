@@ -4,6 +4,8 @@ Mongoose
 - It makes it easier to work with MongoDB using JavaScript objects.
 - It provides features like schemas, models, validation, and CRUD operations.
 
+installing mongoose - npm i mongoose
+
 Schema
 
 - A schema defines the structure and rules of documents in a MongoDB collection.
@@ -19,7 +21,7 @@ Model
 - A model is created from a schema and is used to interact with a MongoDB collection.
 - It provides methods to perform CRUD operations.
 - Example:
-  const Product = mongoose.model("Product", productSchema);
+  const Product = mongoose.model("Product", productSchema, "products");
 - The `Product` model will normally interact with the `products` collection.
 
 dotenv
@@ -29,7 +31,7 @@ dotenv
 - It is commonly used to store sensitive or configuration values such as MongoDB connection strings, passwords, API keys, and port numbers.
 
 - Example `.env`:
-  MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/product
+  MONGO_URI=mongodb+srv://<username>:<password>@usersdatacluster.3rdmog1.mongodb.net/<database>?appName=usersDataCluster
 
 - Access it in Node.js using:
   import dotenv from "dotenv";
