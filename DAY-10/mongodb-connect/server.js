@@ -96,10 +96,10 @@ app.post("/login", async (request, response) => {
 
 // GET PRODUCTS API WITH JWT TOKEN
 
-app.get("/products/", authMiddleware, async (request, response) => {
+app.get("/products/", authMiddleware, async (req, res) => {
   console.log(req.username);
   const allDbProducts = await Product.find({});
-  response.json(allDbProducts);
+  res.json(allDbProducts);
 });
 
 // GET A PRODUCT API WITH JWT TOKEN

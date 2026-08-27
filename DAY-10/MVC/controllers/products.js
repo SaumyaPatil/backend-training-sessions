@@ -27,7 +27,7 @@ export const createAProduct = async (req, res) => {
 };
 
 export const updateAProduct = async (req, res) => {
-  await Product.findByIdAndUpdate(req.params.id, { featured: "Changed" });
+  await Product.findByIdAndUpdate(req.params.id, { price: "Changed" });
   return res.json({ status: "success" });
 };
 
