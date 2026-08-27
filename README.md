@@ -83,12 +83,11 @@
 - Password hashing with `bcrypt`
 - User registration & login APIs
 - JWT — what it is, generating & verifying tokens (jsonwebtoken package)
-- Protecting routes with auth middleware
-
 ---
 
 ## Day 10 — Project Kickoff: Frontend–Backend Integration (Core Focus Day 1)
 
+- Protecting routes with auth middleware
 - MVC architecture (refactoring the code)
 - Recap: what "full-stack integration" actually means (client calls API, API talks to DB)
 - CORS — what it is, why it errors, how to configure `cors` middleware
