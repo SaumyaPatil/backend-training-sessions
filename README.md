@@ -87,6 +87,7 @@
 
 ## Day 10 — Project Kickoff: Frontend–Backend Integration (Core Focus Day 1)
 
+- Custom middlewares - next()
 - Protecting routes with auth middleware
 - MVC architecture (refactoring the code)
 
