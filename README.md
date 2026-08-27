@@ -89,12 +89,6 @@
 
 - Protecting routes with auth middleware
 - MVC architecture (refactoring the code)
-- Recap: what "full-stack integration" actually means (client calls API, API talks to DB)
-- CORS — what it is, why it errors, how to configure `cors` middleware
-- Connecting a simple frontend (plain HTML/JS or React, based on class background) to the Express API using `fetch`/`axios`
-- Structuring the final project: decide the domain (e.g., Task Manager / Mini E-commerce / Blog App)
-- Assign project scope: entities, routes, pages needed
-- API contract discussion — deciding request/response shape frontend and backend agree on
 
 ---
 
