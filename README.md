@@ -85,7 +85,7 @@
 - JWT — what it is, generating & verifying tokens (jsonwebtoken package)
 ---
 
-## Day 10 — Project Kickoff: Frontend–Backend Integration (Core Focus Day 1)
+## Day 10 — Authentication & Authorization (continued)
 
 - Custom middlewares - next()
 - Protecting routes with auth middleware
