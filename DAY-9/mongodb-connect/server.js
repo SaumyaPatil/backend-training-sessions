@@ -98,7 +98,7 @@ app.get("/products/", async (request, response) => {
 // GET A PRODUCT API WITH JWT TOKEN
 app.get("/api/products/:id", async (req, res) => {
   let jwtToken;
-  const authHeader = request.headers["authorization"];
+  const authHeader = req.headers["authorization"];
   if (authHeader !== undefined) {
     jwtToken = authHeader.split(" ")[1];
   }
@@ -122,17 +122,17 @@ app.get("/api/products/:id", async (req, res) => {
 // CREATE A PRODUCT API WITH JWT TOKEN
 app.post("/api/products/", async (req, res) => {
   let jwtToken;
-  const authHeader = request.headers["authorization"];
+  const authHeader = req.headers["authorization"];
   if (authHeader !== undefined) {
     jwtToken = authHeader.split(" ")[1];
   }
   if (jwtToken === undefined) {
-    response.status(401);
-    response.json("Invalid Access Token");
+    res.status(401);
+    res.json("Invalid Access Token");
   } else {
     jwt.verify(jwtToken, "MY_SECRET_TOKEN", async (error, payload) => {
       if (error) {
-        response.json("Invalid Access Token");
+        res.json("Invalid Access Token");
       } else {
         const body = req.body;
         const result = await Product.create({
@@ -154,19 +154,19 @@ app.post("/api/products/", async (req, res) => {
 // UPDATE A PRODUCT API WITH JWT TOKEN
 app.patch("/api/products/:id", async (req, res) => {
   let jwtToken;
-  const authHeader = request.headers["authorization"];
+  const authHeader = req.headers["authorization"];
   if (authHeader !== undefined) {
     jwtToken = authHeader.split(" ")[1];
   }
   if (jwtToken === undefined) {
-    response.status(401);
-    response.json("Invalid Access Token");
+    res.status(401);
+    res.json("Invalid Access Token");
   } else {
     jwt.verify(jwtToken, "MY_SECRET_TOKEN", async (error, payload) => {
       if (error) {
-        response.json("Invalid Access Token");
+        res.json("Invalid Access Token");
       } else {
-        await Product.findByIdAndUpdate(req.params.id, { featured: "Changed" });
+        await Product.findByIdAndUpdate(req.params.id, { price: "Changed" });
         return res.json({ status: "success" });
       }
     });
@@ -176,17 +176,17 @@ app.patch("/api/products/:id", async (req, res) => {
 // DELETE A PRODUCT API WITH JWT TOKEN
 app.delete("/api/products/:id", async (req, res) => {
   let jwtToken;
-  const authHeader = request.headers["authorization"];
+  const authHeader = req.headers["authorization"];
   if (authHeader !== undefined) {
     jwtToken = authHeader.split(" ")[1];
   }
   if (jwtToken === undefined) {
-    response.status(401);
-    response.json("Invalid Access Token");
+    res.status(401);
+    res.json("Invalid Access Token");
   } else {
     jwt.verify(jwtToken, "MY_SECRET_TOKEN", async (error, payload) => {
       if (error) {
-        response.json("Invalid Access Token");
+        res.json("Invalid Access Token");
       } else {
         await Product.findByIdAndDelete(req.params.id);
         return res.json({ status: "Success" });
