@@ -125,4 +125,4 @@ app.use((err, req, res, next) => {
     .json({ status: "error", message: "Something went wrong on the server" });
 });
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(8000, () => console.log(`Server started on port ${PORT}`));

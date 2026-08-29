@@ -2,7 +2,8 @@ import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-export const registerUser = async (next, request, response) => {
+export const registerUser = async (request, response, next) => {
+  console.log(request.body)
   const { username, password, gender, location } = request.body;
 
   try {

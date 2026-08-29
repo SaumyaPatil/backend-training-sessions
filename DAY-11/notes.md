@@ -1,9 +1,9 @@
-## CORS — Cross-Origin Resource Sharing
+## CORS (Cross Origin Resource Sharing)
 
 - Why CORS exists
 
 - CORS is a **browser security feature**, not a server feature.
-- A server can't blindly trust every website — it decides _which_ origins are allowed to access it via the `Access-Control-Allow-Origin` header.
+- A server can't blindly trust every website — it decides which origins are allowed to access it via the `Access-Control-Allow-Origin` header.
 
 - Cookies and credentials
 
@@ -27,7 +27,7 @@
 
 - CORS is enforced by the **browser**, not the server.
 - Postman is a server-to-server tool — there's no browser involved, so there's nothing to enforce the policy.
-- This is also why cookies are a _browser_ concept — Postman has no cookie jar tied to browser security rules the way a real frontend does.
+- This is also why cookies are a browser concept — Postman has no cookie jar tied to browser security rules the way a real frontend does.
 
 ## Centralized Error-Handling Middleware
 
