@@ -1,11 +1,11 @@
 [
   {
     "id": 1,
-    "first_name": "Willem",
-    "last_name": "Glasman",
-    "email": "wglasman0@amazon.co.jp",
-    "gender": "Male",
-    "job_title": "Editor"
+    "first_name": "Saumya",
+    "last_name": "Patil",
+    "email": "saumya@gmail.com",
+    "gender": "Female",
+    "job_title": "Technical Instructor"
   },
   {
     "id": 2,
@@ -7982,21 +7982,5 @@
     "email": "rbarwoodrp@plala.or.jp",
     "gender": "Male",
     "job_title": "Associate Professor"
-  },
-  {
-    "id": 999,
-    "first_name": "Bianka",
-    "last_name": "Wickman",
-    "email": "bwickmanrq@godaddy.com",
-    "gender": "Female",
-    "job_title": "Editor"
-  },
-  {
-    "id": 1000,
-    "first_name": "Giustina",
-    "last_name": "Frodsam",
-    "email": "gfrodsamrr@globo.com",
-    "gender": "Female",
-    "job_title": "Accountant II"
   }
 ]
