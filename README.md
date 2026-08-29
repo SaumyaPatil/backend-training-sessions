@@ -1,4 +1,4 @@
-# Node.js Backend Training Plan — 12 Days
+# Node.js Backend Training Plan — 
 
 ---
 
@@ -81,6 +81,7 @@
 - Password hashing with `bcrypt`
 - User registration & login APIs
 - JWT — what it is, generating & verifying tokens (jsonwebtoken package)
+  
 ---
 
 ## Day 10 — Authentication & Authorization (continued)
@@ -91,23 +92,15 @@
 
 ---
 
-## Day 11 — Project Build Day: Full CRUD Integration
+## Day 11 — Backend Concepts
 
-- Wiring up all CRUD operations end-to-end: forms on frontend → POST/PUT/DELETE → MongoDB → UI updates
-- Handling loading/error states on the frontend
-- Protecting frontend actions using the JWT from Day 9 (attaching token in headers, conditional UI for logged-in users)
-- Testing the whole flow with Postman + browser together
-- Common integration bugs: CORS, wrong content-type, mismatched field names, async race conditions
+- CORS: Cross-Origin-Resource-Sharing
+- Centralised error handling middleware
 
 ---
 
-## Day 12 — Deployment, Polish & Wrap-Up
-
-- Environment variables for production, `.env` best practices, not committing secrets
-- Deploying backend (Render/Railway) + database (Atlas) + frontend (Vercel/Netlify)
-- Basic error handling/logging polish, README documentation
-- Recap of the full journey: Node core → Express → MongoDB → Auth → Integration
-- Discussion: next steps (learning TypeScript, testing, Docker, microservices, GraphQL — as future directions)
+## Day 12 — 
+- 
 
 ---
 
