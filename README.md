@@ -99,7 +99,7 @@
 
 ---
 
-## Day 12 — 
+## Day 12 — Backend Concepts
 
 - CORS package (handling credentails, handling headers)
 - axios library (CRUD operations)
