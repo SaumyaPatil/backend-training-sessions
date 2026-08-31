@@ -100,8 +100,11 @@
 ---
 
 ## Day 12 — 
-- 
 
+- CORS package (handling credentails, handling headers)
+- axios library (CRUD operations)
+- proxy server
+  
 ---
 
 ## Documentation
